@@ -1,0 +1,242 @@
+
+
+print(" Witam w bardzo przydatnym konwerterze metryczno-imperialnym ( i vice versa ) ~")
+
+  func degreesFarenheit(degreeCelsius: Int) -> Int {
+        return Int(1.8 * Float(degreeCelsius) + 32)
+    }
+    
+    func degreesCelsius(degreesFarenheit: Int) -> Int {
+        return Int( (Float(degreesFarenheit) - 32) / 1.8 )
+    }
+
+    func lengthMiles(lengthKilometers: Int) -> Int {
+      return Int( Float(lengthKilometers) * 0.62137 )
+    }
+
+    func lengthKilometers(lengthMiles: Int) -> Int {
+      return Int( Float(lengthMiles) / 0.62137 )
+    }
+
+    func weightKilograms(weightPounds: Int) -> Int{
+      return Int( Float(weightPounds) * 0.4536 )
+    }
+
+    func weightPounds(weightKilograms: Int) -> Int{
+      return Int( Float(weightKilograms) / 0.4536 )
+    }
+
+func converter() {
+
+    print()
+    print("Dokonaj wyboru:")
+    print("1 Zamiana z Celcjusza na stopnie Fahrenheita")
+    print("2 Zamiana z Fahrenheita na stopnie Celciusa")
+    print("3 Zamiana z Kilometerów na Mile")
+    print("4 Zamiana z Mil na Kilometry")
+    print("5 Zamiana z Funtów na Kilogramy")
+    print("6 Zamiana z Kilogramów na Funty")
+
+    if let choice = Int(readLine()!) {
+        
+        if choice == 1 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz temperaturę w stopniach Celsiusa: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > -273 && input < 726 {
+                    
+                        print()
+                        print("Stopnie w Fahrenheitcie:")
+                        print(degreesFarenheit(degreeCelsius: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Nie miesci sie w zakresie! Podaj liczbe od -273 do 726. ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print("* Wpisz liczbe! *")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 2 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz temperaturę w stopniach Fahrenheita: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > -459 && input < 1340 {
+                    
+                        print()
+                        print("Stopnie w Celcjuszu:")
+                        print(degreesCelsius(degreesFarenheit: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Nie miesci sie w zakresie! Podaj liczbe od -459 do 1340. ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbe! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 3 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz odległość w Kilometrach: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > 0  {
+                    
+                        print()
+                        print("Ta odległość w milach to:")
+                        print(lengthMiles(lengthKilometers: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Podaj liczbę wiekszą od 0! ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbe! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 4 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz odległość w Milach: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > 0  {
+                    
+                        print()
+                        print("Ta odległość w kilometrach to:")
+                        print(lengthKilometers(lengthMiles: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Podaj liczbę wiekszą od 0! ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbe! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 5 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz wagę w Funtach: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > 0  {
+                    
+                        print()
+                        print("Ta waga w kilogramach to:")
+                        print(weightKilograms(weightPounds: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Podaj liczbę wiekszą od 0! ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbe! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 6 {     
+            
+            func ans() {
+            
+                print()
+                print("Wpisz wagę w kilogramach: ")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > 0  {
+                    
+                        print()
+                        print("Ta waga w funtach to:")
+                        print(weightPounds(weightKilograms: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Podaj liczbę wiekszą od 0! ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbe! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        }
+
+         else {
+            print()
+            print(" Wpisz 1 lub 2 lub 3 lub 4 lub 5 lub 6 ")
+            return converter()
+        }
+        
+    } else {
+        print()
+        print(" Wpisz 1 lub 2 lub 3 lub 4 lub 5 lub 6 ")
+        return converter()
+    }
+}
+converter()

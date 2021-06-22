@@ -1,0 +1,127 @@
+
+func arabToRoman(wartosc: Int) -> String {
+    
+    var result = ""
+    var number = wartosc
+    
+    while number > 0 {
+        
+        for (roman, decimal) in dictionary {
+            
+            if number - decimal >= 0 {
+                result += roman
+                number -= decimal
+                break
+            }
+        }
+    }
+    return result
+}
+
+
+func romanToArab(wartosc: String) -> Int {
+    
+    var result = 0
+    var number = wartosc
+
+    while number.count > 0 {
+
+        for (roman, decimal) in dictionary {
+            
+            if number.starts(with: roman) {
+                result += decimal
+                number.removeFirst(roman.count)
+                break
+            } 
+        }
+    }
+    return result
+}
+
+let dictionary: [(roman: String, decimal: Int)] = 
+[
+    ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C", 100), ("XC", 90),
+    ("L", 50), ("XL", 40), ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1)
+]
+
+print(" Witam w bardzo przydatnym konwerterze rzymsko-arabskim ( i vice versa ) ~ ")
+
+func converter() {
+
+    print()
+    print("Wybierz opcję:")
+    print("1 Zamiana z arabskich na rzymskie")
+    print("2 Zamiana z rzymskich na arabskie")
+
+    if let choice = Int(readLine()!) {
+        
+        if choice == 1 { 
+            
+            func ans() {
+            
+                print()
+                print("Wpisz liczbę w formacie arabskim:")
+                
+                if let input = Int(readLine()!) {
+                
+                    if input > 0 && input < 4999 {
+                    
+                        print()
+                        print("Liczba rzymska:")
+                        print(arabToRoman(wartosc: input))
+                        return converter()
+                        
+                    } else {
+                        print()
+                        print(" Wpisz liczbe wiekszą od 0 i mniejszą od 4999 ")
+                        return ans()
+                    }
+                    
+                } else {
+                    
+                    print()
+                    print(" Wpisz liczbę! ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else if choice == 2 { 
+            
+            func ans() {
+            
+                print()
+                print("Wpisz liczbę w formacie rzymskim:")
+                
+                let input = readLine()!
+                
+                if input != "" { 
+                
+                    print()
+                    print("Liczba w formacie arabskim to:")
+                    print(romanToArab(wartosc: input))
+                        
+                    return converter()
+
+                } else {
+                    print()
+                    print("Podaj odpowiednia wartość ")
+                    return ans()
+                }
+            }
+            ans()
+            
+        } else {
+            print()
+            print(" Wpisz 1 lub 2 ")
+            return converter()
+        }
+        
+    } else {
+        print()
+        print(" Wpisz 1 lub 2 ")
+        return converter()
+    }
+}
+
+converter()
